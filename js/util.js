@@ -1,4 +1,5 @@
 /**
+ * http://strd6.com/2010/08/useful-javascript-game-extensions-clamp/
  * Returns a number whose value is limited to the given range.
  *
  * Example: limit the output of this computation to between 0 and 255
