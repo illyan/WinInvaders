@@ -57,8 +57,16 @@ function update() {
   if (keydown.right) {
     player.x += 7;
   }
-  player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
 
+  if (keydown.up) {
+    player.y -= 7;
+  }
+
+  if (keydown.down) {
+    player.y += 7;
+  }
+  player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
+  player.y = player.y.clamp(0, CANVAS_HEIGHT - player.height);
 }
 
 function draw() {
