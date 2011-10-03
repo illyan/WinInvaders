@@ -6,7 +6,8 @@
       frame: $.noop,
       update: $.noop,
       width: null,
-      height: null
+      height: null,
+    dir: 0
     };
   }
   
@@ -18,17 +19,19 @@
     
     return {
       draw: function(canvas, x, y) {
-        canvas.drawImage(
-          image,
-          sourceX,
-          sourceY,
-          width,
-          height,
-          x,
-          y,
-          width,
-          height
-        );
+		canvas.drawImage(
+		  image,
+		  sourceX,
+		  sourceY,
+		  width,
+		  height,
+		  x,
+		  y,
+		  width,
+		  height
+		);
+		//canvas.strokeStyle = "rgb(0, 255, 0)";
+		//canvas.strokeRect(x,y,width,height);
       },
       
       fill: function(canvas, x, y, width, height, repeat) {
