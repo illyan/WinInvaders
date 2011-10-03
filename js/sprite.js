@@ -7,7 +7,7 @@
       update: $.noop,
       width: null,
       height: null,
-    dir: 0
+	  dir: 0
     };
   }
   
