@@ -94,9 +94,6 @@ $(window).load(function() {
  *******************************************************************************/
 function update() {
 
-  // Player movement (just for looks)
-  player.y = 650 + Math.floor(Math.random()*3);
-  
   // Bullet cooldown timer
   bulletTimer--;
   
@@ -139,14 +136,22 @@ function update() {
     player.x += P_SPEED;
 	player.dir = 1;
   }
- 
+  
+  document.onmousemove=getMouseCoordinates;
+  
+  if (ev.pageX > player.x+64) {
+	player.x += P_SPEED;
+	player.dir = 1;
+  }
+  if (ev.pageX < player.x+64) {
+	player.x -= P_SPEED;
+	player.dir = 1;
+  }
+  
+  document.onmousedown = shoot;
+  
   if (keydown.space) {
-    if (bulletTimer <= 0){
-	  // Set bullet cooldown
-      bulletTimer = 10;
-	  // Add a bullet
-      bulletArray.push([player.x+64, player.y, 20]);
-	}
+	shoot();
   }
 
 
@@ -163,7 +168,18 @@ function update() {
   player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
   player.y = player.y.clamp(0, CANVAS_HEIGHT - player.height);
 }
+function getMouseCoordinates(event) {
+	ev = event || window.event;
+}
 
+function shoot() {
+    if (bulletTimer <= 0){
+	  // Set bullet cooldown
+      bulletTimer = 10;
+	  // Add a bullet
+      bulletArray.push([player.x+64, player.y, 20]);
+	}
+}
 function draw() {
 
   //document.write(score);
